@@ -1,2 +1,2 @@
-# wayangprogressbar
-The Wayang Progress Bar
+# trail-of-hearts
+Trail of Hearts
