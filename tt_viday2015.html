@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>VDay test</title>
+
+        <style type="text/css">
+            #container
+            {
+                background-color:rgba(254,200,150, 0.7);
+                width:100%;
+                height:100%;
+                position:absolute;
+                z-index:500;
+                left:0px;
+                top:0px;
+                cursor:none;
+            }
+
+            .heart
+            {
+                background-color:#FF0000;
+                position:absolute;
+                z-index:1000;
+                opacity: 0.5;
+                filter: alpha(opacity=50); /* For IE8 and earlier */
+                width:10px;
+                height:10px;
+                -webkit-animation: heartpop 0.5s infinite alternate; /* Chrome, Safari, Opera */
+                animation: heartpop 0.5s infinite alternate;
+            }
+
+
+            /* Chrome, Safari, Opera */
+            @-webkit-keyframes heartpop
+            {
+                from {margin-top:5px;}
+                to {margin-top:-5px;}
+            }
+
+            /* Standard syntax */
+            @keyframes heartpop
+            {
+                from {margin-top:5px;}
+                to {margin-top:-5px;}
+            }
+
+            .heart:before,.heart:after
+            {
+                content:"";
+                border-radius:50%;
+                width:10px;
+                height:10px;
+                display: block;
+                position:absolute;
+                background-color:#FF0000;
+            }
+
+            .heart:before
+            {
+                margin-left:-5px;
+            }
+
+            .heart:after
+            {
+                margin-top:-5px;
+            }
+        </style>
+
+        <script>
+            document.onmousemove=makeheart;
+
+            setInterval(function(){deleteheart();},100);
+
+            function makeheart(e)
+            {
+                        if (!e)
+                        {
+                                var e=window.event;
+                        }
+                     
+                        var x=parseInt(e.screenX);
+                        var y=parseInt(e.screenY);
+
+                        var heartsize=Math.floor((Math.random() * 3));
+                        var heart = document.createElement("div");             
+
+                        document.getElementById("container").appendChild(heart);
+                        heart.className="heart";
+                        heart.style.left=x+"px";
+                        heart.style.top=y+"px";
+                        heart.style.transform="rotate(45deg) scale("+heartsize+","+heartsize+")";
+            }
+
+            function deleteheart()
+            {
+                       var hearts=document.getElementsByClassName("heart");
+
+                       if (hearts.length>10)
+                       {
+                           for (i = 0; i < hearts.length; i++)
+                           {
+                                if (i<=5)
+                                {
+                                    document.getElementById("container").removeChild(hearts[i]);
+                                }
+                           }
+                       }  
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+
+        </div>
+    </body>
+</html>  
