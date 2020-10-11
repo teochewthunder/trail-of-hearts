@@ -11,4 +11,4 @@ How it works:
   - The CSS heart is animated and "beating", for added effect.
 3. At a certain interval, delete those hearts from the div element placeholder.
 
-*Note: Des not appear to work on large displays.*
+*Note: Does not appear to work on large displays.*
